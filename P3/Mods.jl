@@ -5,7 +5,7 @@ using StatsBase
 export NormalizeFunc, FitLine, RSS, TSS, R²
 
 NormalizeFunc(Ans::Vector) = (Ans .- mean(Ans)) / std(Ans)
-FitLine(X::Vector, Y::Vector) = [ones(length(X)) hcat(X)] \ Y
+FitLine(X::Vector, Y::Vector) = [hcat(X) ones(length(X))] \ Y
 
 RSS(Ys::Vector, Xs::Vector, f::Function) = sum((Ys .- f.(Xs)) .^ 2)
 TSS(Ys::Vector) = sum((Ys .- mean(Ys)) .^ 2)
